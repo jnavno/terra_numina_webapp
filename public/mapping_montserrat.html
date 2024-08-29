@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapping - Montserrat</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="index.html">Home Page</a>
+        <a href="account.html">Your Account</a>
+        <a href="practice.html">Practice Space</a>
+        <a href="goodbye.html">Logout</a> <!--redirects to llogin page-->
+    </div>
+
+    <div class="container">
+        <div class="topic-page">
+            <h1>Virtual Mapping United States</h1>
+            <div class="post-input">
+                <form id="postForm">
+                    <label for="postTitle">Title:</label>
+                    <input type="text" id="postTitle" placeholder="Post Title" required>
+                    
+                    <label for="postContent">Content:</label>
+                    <textarea id="postContent" placeholder="Write your post here..." required></textarea>
+                    
+                    <button type="submit">Post</button>
+                </form>
+            </div>
+            <div class="posts">
+                <!-- Posts related to United States mapping will be listed here -->
+            </div>
+            <div class="pagination">
+                <a href="#">&laquo; Previous</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">Next &raquo;</a>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

@@ -1,0 +1,383 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: right;
+}
+
+.navbar a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+/* Center the login form and style inputs */
+.login-container {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 30px;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: calc(100% - 16px); /* Full width minus padding and border */
+    padding: 8px;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    font-size: 14px;
+    height: 40px;
+}
+
+/* Style placeholder text */
+.login-container input::placeholder {
+    color: #8a8989; /* Pale grey color for the placeholder text */
+    font-size: 12px; /* Smaller font size for the placeholder text */
+}
+
+.login-container button {
+    width: calc(100% - 16px); /* Full width minus padding and border */
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #707070;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 40px;
+}
+
+.login-container button:hover {
+    background-color: #9abee5;
+}
+
+/* Container */
+.container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/* Title Wrapper */
+.title-wrapper {
+    margin-bottom: 100px;
+    padding-left: 150px;
+    position: relative;
+    text-align: left;
+    width: 100%;
+}
+
+.title-wrapper h1 {
+    margin: 10;
+    font-size: 2em;
+}
+
+/* Specific styles for the "Your Account" page */
+.account-page .title-wrapper {
+    margin-bottom: 0.5em; /* Adjust the space below the title-wrapper specifically for this page */
+}
+
+/* Ensure other page elements are not affected */
+.account-page .homepage-links {
+    margin-top: 0; /* Reset any margin-top if needed */
+}
+.image-wrapper {
+    left: 50%;
+    position: absolute;
+    top: 10;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.placeholder-image {
+    border: 1px solid #ddd;
+    height: 100px;
+    width: auto;
+}
+
+/* Profile Image section*/
+/* Style for the profile image placeholder */
+.profile-image-wrapper {
+    text-align: left; /* Center the profile image horizontally */
+    margin: 1em 0; /* Space above and below the profile image */
+}
+
+.profile-image {
+    width: 150px; /* Set a fixed width for the profile image */
+    height: 150px; /* Set a fixed height for the profile image */
+    object-fit: cover; /* Ensure the image covers the box without distortion */
+    border-radius: 10%; /* Make the image circular */
+    border: 2px solid #ddd; /* Optional: Add a border around the image */
+}
+
+/* Style for form elements */
+form label {
+    display: block; /* Ensure labels are block elements */
+    margin: 0; /* Space above each label */
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="file"] {
+    display: block; /* Ensure input fields are block elements */
+    margin: 0;
+    width: 100%; /* Make input fields full-width */
+    font-size: 0.9em;
+}
+
+button[type="submit"] {
+    display: block; /* Ensure the button is a block element */
+    margin-top: 0.1em; /* Space above the button */
+    padding: 0.1em 0.5em; /* Padding inside the button */
+    font-size: 1em; /* Font size for the button text */
+}
+
+/* Subtitle wrappers*/
+.subtitle-wrapper .subtitle {
+    font-size: 1.6em; /* This makes the subtitle text larger, but smaller than the title */
+    color: #333333;   /* Adjust this to your desired color */
+    font-weight: 600;  /* Optional: Makes the subtitle text bold */
+    line-height: 0.3;
+    margin-bottom: 0.5em;
+}
+/* Subtitle hyperlinks */
+.subtitle-wrapper .subtitle a {
+    font-size: 1em; /* Adjust this value to control the subtitle font size */
+    color: #333333;   /* Adjust this to your desired color */
+    text-decoration: none; /* Optional: Remove underline from links */
+    font-weight: bold; /* Optional: Make the subtitles bold */
+    margin-bottom: 0.5em;
+    font-family: Arial, sans-serif; /* Ensure same font family for links */
+}
+/* Styling for the hover state */
+.subtitle-wrapper .subtitle a:hover {
+    color: #b1bac4; /* Change color on hover if desired */
+    text-decoration: none; /* Optional: Add underline on hover */
+}
+
+/* Homepage Links */
+.homepage-links {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    max-width: 800px;
+    padding: 20px;
+    text-align: left;
+    width: 100%;
+}
+
+.homepage-links a {
+    color: #b1bac4;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.homepage-links a:hover {
+    background-color: #ffffff;
+    color: #80acdc;
+}
+
+.homepage-links a:active {
+    background-color: #ffffff;
+}
+
+/* Link Sections */
+.link-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+}
+
+.link-section a {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.link-section a:hover {
+    background-color: #0056b3;
+}
+
+.link-section.large {
+    width: 500px;
+    position: relative;
+}
+
+/* Topic Page */
+.topic-page {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+/* Post Input */
+.post-input {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.post-input form {
+    align-items: flex-start;
+    display: flex;
+    gap: 10px;
+}
+
+.post-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.post-form-row input,
+.post-form-row textarea {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.post-form-row input {
+    width: 200px;
+}
+
+.post-form-row textarea {
+    height: 60px;
+    width: 300px;
+}
+
+.post-form-row button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.post-form-row button:hover {
+    background-color: #0056b3;
+}
+
+/* Posts */
+.posts {
+    margin: 20px auto;
+    max-width: 800px;
+    width: 100%;
+}
+
+.post {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.post-left {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+}
+
+.post-right {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.post-author {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.post-author-image {
+    border-radius: 20%;
+    height: 60px;
+    margin-right: 15px;
+    object-fit: cover;
+    width: 60px;
+}
+
+.author-image {
+    border: 1px solid #ddd;
+    border-radius: 10%;
+    height: 80px;
+    margin-bottom: 5px;
+    object-fit: cover;
+    width: 80px;
+}
+
+.author-name {
+    color: #333;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+/* Post Metadata */
+.post-date {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.post-meta {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.post-content {
+    text-align: left;
+}
+
+.post-content p {
+    margin: 0;
+}
+
+.delete-post {
+    align-self: flex-end;
+    background-color: transparent;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 1.2em;
+}
