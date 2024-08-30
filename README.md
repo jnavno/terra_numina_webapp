@@ -2,7 +2,9 @@
 
 ## Overview
 
-Brief description of the project.
+The project involves developing a web application for Terra Numina, focused on archiving and sharing discussions and resources related to land energy work, environmental topics, and spiritual practices. The application includes a content management system that allows admins to control and synchronize user and admin views. It features a responsive design for displaying discussion topics with author attribution and time stamps.
+
+The backend is built using MongoDB, initially configured locally, with plans for future integration into a cloud-based database environment for scalable data management. The application is hosted on Vercel, facilitating deployment and global accessibility.
 
 ## Prerequisites
 
@@ -29,16 +31,7 @@ This will install all the dependencies listed in package.json, including:
 - cors: Middleware for enabling Cross-Origin Resource Sharing.
 - helmet: Middleware for securing Express apps by setting various HTTP headers.
 
-### 3. Creting a new Node.js Project (inf starting from scratch)
-
-```bash
-mkdir knowledge-platform-backend
-cd knowledge-platform-backend
-npm init -y
-npm install express mongoose body-parser cors
-
-```
-### 4. Setup MongoDB
+### 3. Setup MongoDB
 
 Create a MongoDB repository configuration file for yum:
 ```bash
@@ -67,7 +60,7 @@ Check status:
 ```bash
 sudo systemctl status mongod
 ```
-### 5. Run the server
+### 4. Run the server
 ```bash
 node server.js
 ```
