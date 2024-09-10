@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // MongoDB connection
 module.exports = {
-    connectMongoDB: () => {
+    connectMongoDB: () => { //currently allowed IP addresses: 129.222.179.114
         const uri = 'mongodb+srv://subsjnn:MWfnDObuKfdPvaA6@dev-cluster.fj1uv.mongodb.net/?retryWrites=true&w=majority&appName=dev-cluster';
         // For local MongoDB, use the following URI instead
         // const uri = 'mongodb://localhost:27017/knowledge-platform';

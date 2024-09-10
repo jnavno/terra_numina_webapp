@@ -2,24 +2,24 @@
 
 ## Overview
 
-The project involves developing a web application for Terra Numina, focused on archiving and sharing discussions and resources related to land energy work, environmental topics, and spiritual practices. The application includes a content management system that allows admins to control and synchronize user and admin views. It features a responsive design for displaying discussion topics with author attribution and time stamps.
+The project involves developing a web application for Terra Numina, focused on archiving and sharing focused discussions and resources related to land energy work, environmental topics, and spiritual practices. This application includes a content management system that allows admins to control and synchronize students, visitors and admin views. It features a responsive design for displaying discussion topics with author attribution and time stamps.
 
-The backend is built using MongoDB, initially configured locally, with plans for future integration into a cloud-based database environment for scalable data management. The application is hosted on Vercel, facilitating deployment and global accessibility.
+The backend is built using MongoDB, integrated into its cloud-based Atlas database environment for scalable data management. Local development is still available via localhost:27017 (see mongoMiddleware.js). The app is hosted [here](https://terra-numina-web.vercel.app), via Vercel.com facilitating deployment and global accessibility.
 
 ## Prerequisites
 
 Ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/) (version X.X.X)
-- [MongoDB](https://www.mongodb.com/try/download/community) (version X.X.X)
+- [Node.js](https://nodejs.org/) (latest version)
+- [MongoDB](https://www.mongodb.com/try/download/community) (latest version)
 
 ## Project Setup
 
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd <repository-directory>
+cd <your-repository-directory>
+git clone git@github.com:jnavno/terra_numina_web.git
 ```
 ### 2. Install dependencies
 ```bash
@@ -60,13 +60,6 @@ Check status:
 ```bash
 sudo systemctl status mongod
 ```
-Connecting to mngodb Atlas cluster:
-name: dev-cluster
-allowed IP addresses: 129.222.179.114
-username: subsjnn
-password: MWfnDObuKfdPvaA6@
-password: mongodb+srv://subsjnn:MWfnDObuKfdPvaA6@dev-cluster.fj1uv.mongodb.net/?retryWrites=true&w=majority&appName=dev-cluster
-
 
 ### 4. Run the server
 ```bash

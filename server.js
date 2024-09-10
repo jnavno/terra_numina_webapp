@@ -15,7 +15,7 @@ const port = 3000;
 
 // Middleware
 app.use(cors({
-    origin: 'https://terra-numina-web.vercel.app', // Update with your Vercel URL
+    origin: 'https://terra-numina-web.vercel.app',
     credentials: true
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
