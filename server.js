@@ -1,10 +1,14 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const path = require('path');
-const helmet = require('helmet');
 const session = require('express-session');
+const cors = require('cors');
+const helmet = require('helmet');
+const path = require('path');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+// Custom middlewares
+const mongoMiddleware = require('./middleware/mongoMiddleware');
+const authMiddleware = require('./middleware/authMiddleware'); // Auth middleware
 
 const app = express();
 const port = 3000;
@@ -33,41 +37,54 @@ app.use(helmet({
 // Session Management
 app.use(session({
     secret: 'your-secret-key',
-    resave: false,          // Avoid resaving session if it hasn't changed
-    saveUninitialized: false, // Only save session when data is set
-    cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 } // Set a reasonable expiry
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 }
 }));
 
-// Middleware to check authentication
-app.use((req, res, next) => {
-    if (req.path === '/' || req.path.startsWith('/login') || req.path.startsWith('/goodbye') || req.path.startsWith('/public')) {
-        return next();
+// Initializing MongoDB Connection (through middleware)
+mongoMiddleware.connectMongoDB();
+
+app.get('/test-db-connection', async (req, res) => {
+    try {
+        const result = await mongoose.connection.db.admin().ping();
+        res.status(200).json({ message: 'Connected to MongoDB!', result });
+    } catch (error) {
+        res.status(500).json({ error: 'Connection failed!', details: error.message });
     }
+});
+
+// Routes
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
+
+// Home Page Route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Authentication Routes
+app.get('/login', (req, res) => {
     if (req.session.user) {
-        return next();
+        const userRole = req.session.user.role;
+        return res.redirect(userRole === 'admin' ? '/admin-dashboard' : '/student-dashboard');
     }
-    res.redirect('/login');
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
-// MongoDB connection
-mongoose.connect('mongodb://localhost:27017/knowledge-platform', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+app.post('/login', authMiddleware.handleLogin);
+app.get('/logout', authMiddleware.handleLogout);
+app.get('/login-status', authMiddleware.checkLoginStatus);
 
-// Define the Post schema and model
-const PostSchema = new mongoose.Schema({
-    content: String,
-    author: String,
-    date: { type: Date, default: Date.now }
+// Secured Page Route
+app.get('/terra_numina', authMiddleware.ensureAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'terra_numina.html'));
 });
-
-const Post = mongoose.model('Post', PostSchema);
 
 // API Routes
+app.use('/api/posts', authMiddleware.ensureAuthenticated); // Protect routes
 app.post('/api/posts', async (req, res) => {
     try {
-        const newPost = new Post(req.body);
+        const newPost = new mongoMiddleware.Post(req.body);
         await newPost.save();
         res.status(201).json(newPost);
     } catch (error) {
@@ -77,78 +94,10 @@ app.post('/api/posts', async (req, res) => {
 
 app.get('/api/posts', async (req, res) => {
     try {
-        const posts = await Post.find().sort({ date: -1 });
+        const posts = await mongoMiddleware.Post.find().sort({ date: -1 });
         res.status(200).json(posts);
     } catch (error) {
         res.status(400).json({ error: error.message });
-    }
-});
-
-// Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Route to serve the index page
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// Route to serve the login page
-app.get('/login', (req, res) => {
-    if (req.session.user) {
-        // Redirect based on user role
-        if (req.session.user.role === 'admin') {
-            return res.redirect('/admin-dashboard');
-        } else if (req.session.user.role === 'student') {
-            return res.redirect('/student-dashboard');
-        }
-    }
-    res.sendFile(path.join(__dirname, 'public', 'login.html')); // Show login page if not logged in
-});
-
-// Route to handle the login logic
-app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-
-    // Example authentication logic
-    if (username === 'user' && password === 'pass') {
-        req.session.user = { username };
-        return res.status(200).json({ message: 'Login successful' });
-    }
-
-    res.status(401).json({ error: 'Invalid credentials' }); // Return JSON error response
-});
-
-// Route to handle logout
-app.get('/logout', (req, res) => {
-    req.session.destroy(err => {
-        if (err) {
-            return res.status(500).send('Could not log out.');
-        }
-        res.redirect('/goodbye');
-    });
-});
-
-// Route to check login status
-app.get('/login-status', (req, res) => {
-    if (req.session.user) {
-        // Return logged-in status
-        return res.status(200).json({ loggedIn: true });
-    }
-    // If user is not logged in
-    res.status(200).json({ loggedIn: false });
-});
-
-// Route to serve the goodbye page
-app.get('/goodbye', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'goodbye.html'));
-});
-
-// Route to serve the authenticated page
-app.get('/terra_numina', (req, res) => {
-    if (req.session.user) {
-        res.sendFile(path.join(__dirname, 'public', 'terra_numina.html'));
-    } else {
-        res.redirect('/login');
     }
 });
 

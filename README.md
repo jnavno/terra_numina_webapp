@@ -60,6 +60,14 @@ Check status:
 ```bash
 sudo systemctl status mongod
 ```
+Connecting to mngodb Atlas cluster:
+name: dev-cluster
+allowed IP addresses: 129.222.179.114
+username: subsjnn
+password: MWfnDObuKfdPvaA6@
+password: mongodb+srv://subsjnn:MWfnDObuKfdPvaA6@dev-cluster.fj1uv.mongodb.net/?retryWrites=true&w=majority&appName=dev-cluster
+
+
 ### 4. Run the server
 ```bash
 node server.js
@@ -68,4 +76,8 @@ node server.js
 Open the browser to this address:
 ```bash
 http://localhost:3000/
+```
+### 5. Test remote connection to MongoDB:
+```bash
+curl http://localhost:3000/test-db-connection
 ```
