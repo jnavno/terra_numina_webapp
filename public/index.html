@@ -12,33 +12,67 @@
 <body>
     <div class="navbar">
         <a href="/">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html">Contact</a>
-        <a href="login.html">Login</a> 
+        <a href="background.html">Background</a>
+        <a href="resources.html">Resources</a>
+        <a href="login.html">Login</a>
         <a href="terra_numina.html" style="display:none;">Terra Numina</a>
-        <a href="logout.html" style="display:none;">Logout</a> 
+        <a href="logout.html" style="display:none;">Logout</a>
     </div>
 
-    <div class="container">
-        <header>
-            <h1>Welcome to Terra Numina</h1>
-            <p>Your gateway to exploration and discovery.</p>
-        </header>
+    <header class="header-image">
+        <div class="header-text">
+            <h1>Terra Numina</h1>
+        </div>
+    </header>
 
+    <!-- New container class for index-specific layout -->
+    <div class="index-container">
         <section class="intro">
-            <h2>About Us</h2>
-            <p>We offer a wide range of resources and information on various topics. Explore our site to learn more about our offerings.</p>
-            <a href="about.html" class="btn">Learn More</a>
+            <h2>This is what we do and how we do it</h2>
+            <p>We are about sacred lands and transformational journeys.</p>
+            <a href="background.html" class="btn">Learn More</a>
         </section>
 
         <section class="services">
-            <h2>Our Services</h2>
-            <ul>
-                <li><a href="services.html#service1">Service 1</a></li>
-                <li><a href="services.html#service2">Service 2</a></li>
-                <li><a href="services.html#service3">Service 3</a></li>
-            </ul>
+            <h2>This is what we offer</h2>
+            <div class="services-container">
+                <div class="service">
+                    <p>Service 1</p>
+                    <a href="services.html#service1">
+                        <img src="images/icon1.png" alt="Service 1">
+                    </a>
+                </div>
+                <div class="service">
+                    <p>Service 2</p>
+                    <a href="services.html#service2">
+                        <img src="images/icon4.png" alt="Service 2">
+                    </a>
+                </div>
+                <div class="service">
+                    <p>Service 3</p>
+                    <a href="services.html#service3">
+                        <img src="images/icon3.png" alt="Service 3">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Explore More</h2>
+            <div class="resources-container">
+                <div class="resource">
+                    <p>External Resources</p>
+                    <a href="external_resources.html#External Resources">
+                        <img src="images/icon2.png" alt="External Resources">
+                    </a>
+                </div>
+                <div class="resource">
+                    <p>Reading Resources</p>
+                    <a href="reading_resources.html#Reading Resources">
+                        <img src="images/icon2.png" alt="Reading Resources">
+                    </a>
+                </div>
+            </div>
         </section>
 
         <section class="contact">

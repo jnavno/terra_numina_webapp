@@ -1,8 +1,9 @@
 /* General Styles */
-body {
+html, body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -88,8 +89,48 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 100%;
     padding: 20px;
+}
+
+/* New index-specific container class */
+.index-container {
+    width: 100%; /* Full width of parent */
+    max-width: 100%; /* Set maximum width for large screens */
+    margin: 0 auto; /* Center the container */
+    padding: 0; /* Add horizontal padding */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    align-items: center;
+}
+
+footer {
+    text-align: center; /* Center text in the footer */
+    width: 100%; /* Full width of the parent container */
+    padding: 20px 0; /* Add padding if needed */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    background-color: #f1f1f1; /* Optional: Background color */
+    margin: 0; /* Ensure no margin is applied */
+}
+
+/* New block-specific class for index page */
+.index-block-container {
+    width: 100%; /* Full width of parent */
+    padding: 0; /* Remove extra padding */
+    margin: 0; /* Remove extra margin */
+}
+
+/* Adjust section styling within the index block container */
+.index-block-container section {
+    width: 100%; /* Full width */
+    padding: 20px;
+    margin: 0; /* Remove extra margin */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+/* Adjust header image if needed */
+.index-header-image {
+    width: 100%; /* Full width of parent */
+    height: auto; /* Maintain aspect ratio */
 }
 
 /* Title Wrapper */
@@ -381,6 +422,179 @@ textarea {
     padding: 10px;
 }
 
+/* Container */
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 5px;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+/* Sections Styling */
+main.sections {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Header Image */
+.header-image {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Adjust height as needed */
+    background: url('images/header-image.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.header-text {
+    text-align: center;
+}
+
+.header-text h1 {
+    font-size: 4.5em; /* Adjust font size as needed */
+    margin: 0;
+    color: white;
+    text-shadow: 
+        3px 3px 5px rgba(0, 0, 0, 0.4), 
+        0 0 30px rgba(0, 0, 0, 0.2), 
+        0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.header-text p {
+    color: white;
+    font-size: 2.5rem; /* Adjust as needed */
+    text-shadow: 
+    3px 3px 5px rgba(0, 0, 0, 0.4),   /* Darker grey shadow, extended */
+        0 0 15px rgba(0, 0, 0, 0.2),  /* Lighter grey aura, extended */
+        0 0 10px rgba(0, 0, 0, 0.2);   /* Additional light grey shadow, extended */
+}
+
+
+section {
+    width: 100%;
+    padding: 20px;
+    border-radius: 0;
+    border: none;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-height: 100px; /* Ensure sections have a minimum height */
+    overflow: hidden;
+    margin: 0; /* Achieving continuous blocks */
+}
+
+/* Alternating Background Colors */
+.header-image {
+    background-color: #f1f1f1; /* Light grey */
+}
+
+.intro {
+    background-color: #e0e0e0; /* Slightly darker grey */
+}
+
+.services {
+    background-color: #f1f1f1; /* Light grey */
+}
+
+.contact {
+    background-color: #f1f1f1; /* Slightly darker grey */
+}
+
+.podcast {
+    background-color: #f1f1f1; /* Light grey */
+}
+
+.resources {
+    background-color: #e0e0e0; /* Slightly darker grey */
+}
+
+
+section h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 5px;
+    margin-top: 1px;
+}
+
+section p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+section a.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+section a.btn:hover {
+    background-color: #555;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Services container adjustments */
+.services-container, .resources-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between services */
+    align-items: center;
+}
+
+.service, .resource {
+    flex: 2; /* Allow each service to take equal space */
+    text-align: center; /* Center align text */
+}
+
+.service img, .resource img{
+    width: 80px; /* Adjust icon size */
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.service p {
+    font-size: 1em;
+    color: #333;
+}
+
+.service p a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.service p a:hover {
+    color: #555;
+}
+
+
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .navbar {
@@ -405,6 +619,27 @@ textarea {
 
     .link-section {
         width: 100%;
+    }
+    
+    section {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .services-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+    
+    .header-image {
+        height: 200px; /* Adjust for smaller screens */
+    }
+    .container {
+        width: 100%; /* Full width on smaller screens */
     }
 }
 
