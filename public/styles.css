@@ -8,16 +8,24 @@ body {
 
 /* Navbar */
 .navbar {
+    display: flex;
+    justify-content: flex-end; /* Space between items */
+    align-items: center; /* Vertically center items */
     background-color: #333;
     color: white;
-    padding: 10px;
-    text-align: right;
+    padding: 10px 20px; /* Adjust padding for spacing */
+    box-sizing: border-box; /* Ensure padding is included in the total width */
 }
 
 .navbar a {
     color: white;
     margin: 0 15px;
     text-decoration: none;
+    font-size: 16px; /* Set a base font size */
+}
+
+.navbar a:hover {
+    background-color: #575757; /* Background color on hover */
 }
 
 /* Center the login form and style inputs */
@@ -52,7 +60,6 @@ body {
     height: 40px;
 }
 
-/* Style placeholder text */
 .login-container input::placeholder {
     color: #8a8989; /* Pale grey color for the placeholder text */
     font-size: 12px; /* Smaller font size for the placeholder text */
@@ -77,9 +84,9 @@ body {
 
 /* Container */
 .container {
-    align-items: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: 0 auto;
     max-width: 1200px;
     padding: 20px;
@@ -108,10 +115,11 @@ body {
 .account-page .homepage-links {
     margin-top: 0; /* Reset any margin-top if needed */
 }
+
 .image-wrapper {
-    left: 50%;
     position: absolute;
-    top: 10;
+    top: 10px;
+    left: 50%;
     transform: translateX(-50%);
     z-index: -1;
 }
@@ -122,19 +130,18 @@ body {
     width: auto;
 }
 
-/* Profile Image section*/
-/* Style for the profile image placeholder */
+/* Profile Image section */
 .profile-image-wrapper {
     text-align: left; /* Center the profile image horizontally */
     margin: 1em 0; /* Space above and below the profile image */
 }
 
 .profile-image {
-    width: 150px; /* Set a fixed width for the profile image */
-    height: 150px; /* Set a fixed height for the profile image */
-    object-fit: cover; /* Ensure the image covers the box without distortion */
-    border-radius: 10%; /* Make the image circular */
-    border: 2px solid #ddd; /* Optional: Add a border around the image */
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10%;
+    border: 2px solid #ddd;
 }
 
 /* Style for form elements */
@@ -148,7 +155,14 @@ form input[type="password"],
 form input[type="file"] {
     display: block; /* Ensure input fields are block elements */
     margin: 0;
-    width: 100%; /* Make input fields full-width */
+    width: 50%; /* Make input fields full-width */
+    font-size: 0.9em;
+}
+
+form textarea {
+    display: block; /* Ensure textareas are block elements */
+    margin: 0;
+    width: 50%; /* Set textareas to half size */
     font-size: 0.9em;
 }
 
@@ -159,32 +173,31 @@ button[type="submit"] {
     font-size: 1em; /* Font size for the button text */
 }
 
-/* Subtitle wrappers*/
+/* Subtitle Wrappers */
 .subtitle-wrapper .subtitle {
     font-size: 1.6em; /* This makes the subtitle text larger, but smaller than the title */
-    color: #333333;   /* Adjust this to your desired color */
-    font-weight: 600;  /* Optional: Makes the subtitle text bold */
-    line-height: 0.3;
+    color: #333333;
+    font-weight: 600;
+    line-height: 1.2; /* Adjust line height */
     margin-bottom: 0.5em;
 }
-/* Subtitle hyperlinks */
+
 .subtitle-wrapper .subtitle a {
-    font-size: 1em; /* Adjust this value to control the subtitle font size */
-    color: #333333;   /* Adjust this to your desired color */
-    text-decoration: none; /* Optional: Remove underline from links */
-    font-weight: bold; /* Optional: Make the subtitles bold */
+    font-size: 1em;
+    color: #333333;
+    text-decoration: none;
+    font-weight: bold;
     margin-bottom: 0.5em;
-    font-family: Arial, sans-serif; /* Ensure same font family for links */
+    font-family: Arial, sans-serif;
 }
-/* Styling for the hover state */
+
 .subtitle-wrapper .subtitle a:hover {
     color: #b1bac4; /* Change color on hover if desired */
-    text-decoration: none; /* Optional: Add underline on hover */
+    text-decoration: none;
 }
 
 /* Homepage Links */
 .homepage-links {
-    align-items: flex-start;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -242,15 +255,15 @@ button[type="submit"] {
 
 /* Post Input */
 .post-input {
-    align-items: flex-start;
     display: flex;
     flex-direction: column;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
 .post-input form {
-    align-items: flex-start;
     display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 
@@ -308,9 +321,9 @@ button[type="submit"] {
 }
 
 .post-left {
-    align-items: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-right: 15px;
 }
 
@@ -321,27 +334,27 @@ button[type="submit"] {
 }
 
 .post-author {
-    align-items: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-right: 20px;
 }
 
 .post-author-image {
     border-radius: 20%;
     height: 60px;
-    margin-right: 15px;
-    object-fit: cover;
     width: 60px;
+    object-fit: cover;
+    margin-right: 15px;
 }
 
 .author-image {
     border: 1px solid #ddd;
     border-radius: 10%;
     height: 80px;
+    width: 80px;
     margin-bottom: 5px;
     object-fit: cover;
-    width: 80px;
 }
 
 .author-name {
@@ -360,24 +373,49 @@ button[type="submit"] {
 
 .post-meta {
     color: #666;
-    font-size: 0.9em;
-    margin-bottom: 5px;
-    text-align: left;
+    font-size: 0.8em;
 }
 
-.post-content {
-    text-align: left;
+/* Ensure better spacing for text areas */
+textarea {
+    padding: 10px;
 }
 
-.post-content p {
-    margin: 0;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar a {
+        margin: 10px 0;
+    }
+
+    .login-container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .homepage-links {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .link-section {
+        width: 100%;
+    }
 }
 
-.delete-post {
-    align-self: flex-end;
-    background-color: transparent;
-    border: none;
-    color: #e74c3c;
-    cursor: pointer;
-    font-size: 1.2em;
+@media (max-width: 480px) {
+    .login-container input,
+    .login-container button {
+        width: calc(100% - 12px);
+    }
+
+    .post-form-row input,
+    .post-form-row textarea {
+        width: 100%;
+    }
 }

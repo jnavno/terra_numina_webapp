@@ -104,3 +104,26 @@ const postForm = document.querySelector('#postForm');
 if (postForm) {
     postForm.addEventListener('submit', handlePostSubmit);
 }
+
+
+// Check login status and toggle login/logout buttons
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('/login-status')
+        .then(response => response.json())
+        .then(data => {
+            const loginButton = document.querySelector('a[href="login.html"]');
+            const logoutButton = document.querySelector('a[href="logout.html"]');
+            const terraNuminaButton = document.querySelector('a[href="terra_numina.html"]');
+            
+            if (data.loggedIn) {
+                if (loginButton) loginButton.style.display = 'none'; // Hide login button
+                if (logoutButton) logoutButton.style.display = 'block'; // Show logout button
+                if (terraNuminaButton) terraNuminaButton.style.display = 'block'; // Show Terra Numina button
+            } else {
+                if (loginButton) loginButton.style.display = 'block'; // Show login button
+                if (logoutButton) logoutButton.style.display = 'none'; // Hide logout button
+                if (terraNuminaButton) terraNuminaButton.style.display = 'none'; // Hide Terra Numina button
+            }
+        })
+        .catch(error => console.error('Error fetching login status:', error));
+});

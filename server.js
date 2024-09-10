@@ -33,9 +33,9 @@ app.use(helmet({
 // Session Management
 app.use(session({
     secret: 'your-secret-key',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false } // Set to true if using HTTPS
+    resave: false,          // Avoid resaving session if it hasn't changed
+    saveUninitialized: false, // Only save session when data is set
+    cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 } // Set a reasonable expiry
 }));
 
 // Middleware to check authentication
@@ -95,10 +95,14 @@ app.get('/', (req, res) => {
 // Route to serve the login page
 app.get('/login', (req, res) => {
     if (req.session.user) {
-        res.redirect('/terra_numina');
-    } else {
-        res.sendFile(path.join(__dirname, 'public', 'login.html'));
+        // Redirect based on user role
+        if (req.session.user.role === 'admin') {
+            return res.redirect('/admin-dashboard');
+        } else if (req.session.user.role === 'student') {
+            return res.redirect('/student-dashboard');
+        }
     }
+    res.sendFile(path.join(__dirname, 'public', 'login.html')); // Show login page if not logged in
 });
 
 // Route to handle the login logic
@@ -122,6 +126,16 @@ app.get('/logout', (req, res) => {
         }
         res.redirect('/goodbye');
     });
+});
+
+// Route to check login status
+app.get('/login-status', (req, res) => {
+    if (req.session.user) {
+        // Return logged-in status
+        return res.status(200).json({ loggedIn: true });
+    }
+    // If user is not logged in
+    res.status(200).json({ loggedIn: false });
 });
 
 // Route to serve the goodbye page
