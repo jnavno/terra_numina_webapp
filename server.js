@@ -14,7 +14,10 @@ const app = express();
 const port = 3000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'https://terra-numina-web.vercel.app', // Update with your Vercel URL
+    credentials: true
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(helmet({
@@ -39,7 +42,7 @@ app.use(session({
     secret: 'your-secret-key',
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 }
+    cookie: { secure: true, maxAge: 24 * 60 * 60 * 1000 }
 }));
 
 // Initializing MongoDB Connection (through middleware)

@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             const loginButton = document.querySelector('a[href="login.html"]');
-            const logoutButton = document.querySelector('a[href="logout.html"]');
+            const logoutButton = document.querySelector('a[href="goodbye.html"]');
             const terraNuminaButton = document.querySelector('a[href="terra_numina.html"]');
             
             if (data.loggedIn) {
