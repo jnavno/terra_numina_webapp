@@ -9,6 +9,7 @@ module.exports = {
         // Add login logic here
         if (username === 'user' && password === 'pass') {
             req.session.user = { username, role: 'student' }; // Example role
+            console.log('Login successful:', req.session.user); // Debugging
             return res.status(200).json({ message: 'Login successful' });
         }
         res.status(401).json({ error: 'Invalid credentials' });

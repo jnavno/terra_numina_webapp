@@ -37,12 +37,12 @@ app.use(helmet({
     noSniff: false
 }));
 
-// Session Management
+// Session Management   
 app.use(session({
-    secret: 'your-secret-key',
+    secret: process.env.SESSION_SECRET || 'VvkZHT&bT*I0nthcivk2FkDsh', // Use environment variable or fallback to a default
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true, maxAge: 24 * 60 * 60 * 1000 }
+    cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 24 * 60 * 60 * 1000 }
 }));
 
 // Initializing MongoDB Connection (through middleware)
