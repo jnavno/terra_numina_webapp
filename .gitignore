@@ -29,3 +29,8 @@ db/
 # Optional: OS-specific files
 *.swp
 *~
+
+#Other tools
+.env.*
+.npmrc
+.yarnrc
