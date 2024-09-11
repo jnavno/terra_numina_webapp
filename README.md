@@ -2,23 +2,26 @@
 
 ## Overview
 
-The project involves developing a web application for Terra Numina, focused on archiving and sharing focused discussions and resources related to land energy work, environmental topics, and spiritual practices. This application includes a content management system that allows admins to control and synchronize students, visitors and admin views. It features a responsive design for displaying discussion topics with author attribution and time stamps.
+The Terra Numina WebApp is designed to archive and share discussions and resources on land energy work, environmental topics, and spiritual practices. It includes a content management system for admins to manage views and features a responsive design for displaying discussion topics with author details and timestamps.
 
-The backend is built using MongoDB, integrated into its cloud-based Atlas database environment for scalable data management. Local development is still available via localhost:27017 (see mongoMiddleware.js). The app is hosted [here](https://terra-numina-web.vercel.app), via Vercel.com facilitating deployment and global accessibility.
+- **Backend**: Built with MongoDB, using Atlas for scalable data management.
+- **Local Development**: Uses `MONGODB_URI_LOCAL`.
+- **Production**: Uses `MONGODB_URI_PROD`.
+- **Hosted**: [Terra Numina WebApp](https://terra-numina-web.vercel.app) via Vercel.
 
 ## Prerequisites
 
-Ensure you have the following installed:
+Ensure the following are installed:
 
 - [Node.js](https://nodejs.org/) (latest version)
 - [MongoDB](https://www.mongodb.com/try/download/community) (latest version)
 
-## Project Setup
+## Setup Instructions
 
 ### 1. Clone the Repository
 
 ```bash
-cd <your-repository-directory>
+cd terra_numina_web
 git clone git@github.com:jnavno/terra_numina_web.git
 ```
 ### 2. Install dependencies
@@ -31,7 +34,7 @@ This will install all the dependencies listed in package.json, including:
 - cors: Middleware for enabling Cross-Origin Resource Sharing.
 - helmet: Middleware for securing Express apps by setting various HTTP headers.
 
-### 3. Setup MongoDB
+### 3. Setup MongoDB (Local Development)
 
 Create a MongoDB repository configuration file for yum:
 ```bash
@@ -48,29 +51,39 @@ Install MOngoDB:
 ```bash
 sudo dnf install -y mongodb-org
 ```
-Srat MongoDB using:
+Srat and enable MongoDB:
 ```bash
 sudo systemctl start mongod
-```
-and enable it to run on boot:
-```bash
 sudo systemctl enable mongod
 ```
-Check status:
+Check MongoDB status:
 ```bash
 sudo systemctl status mongod
 ```
 
 ### 4. Run the server
 ```bash
-node server.js
+npm start
 ```
+- Local Development: Set NODE_ENV=development.
+- Production: Set NODE_ENV=production (handled automatically on Vercel).
 
+## Environment Variables
+
+Create a .env file in the root directory with the following variables:
+
+   - MONGODB_URI_LOCAL: MongoDB URI for local development.
+   - MONGODB_URI_PROD: MongoDB URI for production.
+   - SESSION_SECRET: Secret key for session management.
+
+## Testing
+### 1. Test Local Server
 Open the browser to this address:
 ```bash
 http://localhost:3000/
 ```
-### 5. Test remote connection to MongoDB:
+### 2. Test MongoDB Connection
 ```bash
 curl http://localhost:3000/test-db-connection
 ```
+

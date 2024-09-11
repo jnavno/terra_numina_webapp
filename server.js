@@ -39,11 +39,15 @@ app.use(helmet({
 
 // Session Management   
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'VvkZHT&bT*I0nthcivk2FkDsh', // Use environment variable or fallback to a default
+    secret: process.env.NODE_ENV === 'production' ? process.env.SESSION_SECRET_PROD : process.env.SESSION_SECRET_LOCAL,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 24 * 60 * 60 * 1000 }
+    cookie: {
+        secure: process.env.NODE_ENV === 'production', // Ensure cookies are secure in production
+        maxAge: 24 * 60 * 60 * 1000 // 1 day
+    }
 }));
+
 
 // Initializing MongoDB Connection (through middleware)
 mongoMiddleware.connectMongoDB();

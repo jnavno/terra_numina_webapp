@@ -1,17 +1,18 @@
 const mongoose = require('mongoose');
+require('dotenv').config(); // Load environment variables from .env file
 
 // MongoDB connection
 module.exports = {
     connectMongoDB: () => { //currently allowed IP addresses: 129.222.179.114
-        const uri = 'mongodb+srv://subsjnn:MWfnDObuKfdPvaA6@dev-cluster.fj1uv.mongodb.net/?retryWrites=true&w=majority&appName=dev-cluster';
-        // For local MongoDB, use the following URI instead
-        // const uri = 'mongodb://localhost:27017/knowledge-platform';
+        const uri = process.env.NODE_ENV === 'production'
+            ? process.env.MONGODB_URI_PROD // Use production MongoDB URI
+            : process.env.MONGODB_URI_LOCAL; // Use local MongoDB URI
 
         mongoose.connect(uri, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         }).then(() => {
-            console.log("Connected to MongoDB!");
+            console.log(`Connected to MongoDB: ${process.env.NODE_ENV}`);
         }).catch(err => {
             console.error("MongoDB connection error:", err);
         });
