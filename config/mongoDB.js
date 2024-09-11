@@ -1,5 +1,6 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.MONGODB_URI_PROD || "mongodb://localhost:27017/knowledge-platform";
+// Use environment variable for MongoDB URI, fallback to local if not set
+const uri = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI_PROD : process.env.MONGODB_URI_LOCAL;
 
 const client = new MongoClient(uri, {
   serverApi: {
