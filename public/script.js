@@ -108,12 +108,14 @@ if (postForm) {
 
 // Check login status and toggle login/logout buttons
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/login-status')
+    fetch('/login-status',{
+        credentials: 'include'
+    })
         .then(response => response.json())
         .then(data => {
-            const loginButton = document.querySelector('a[href="login.html"]');
-            const logoutButton = document.querySelector('a[href="goodbye.html"]');
-            const terraNuminaButton = document.querySelector('a[href="terra_numina.html"]');
+            const loginButton = document.querySelector('a[href="/login"]');
+            const logoutButton = document.querySelector('a[href="/goodbye"]');
+            const terraNuminaButton = document.querySelector('a[href="/terra_numina"]');
             
             if (data.loggedIn) {
                 if (loginButton) loginButton.style.display = 'none'; // Hide login button

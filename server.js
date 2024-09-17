@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo');
 
 // Custom middlewares
 const mongoMiddleware = require('./middleware/mongoMiddleware');
@@ -12,10 +13,15 @@ const authMiddleware = require('./middleware/authMiddleware'); // Auth middlewar
 
 const app = express();
 const port = 3000;
+const allowedOrigins = [
+    'https://terra-numina-web.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:5500' // Add any other origins you use for development
+];
 
 // Middleware
 app.use(cors({
-    origin: 'https://terra-numina-web.vercel.app',
+    origin: allowedOrigins,
     credentials: true
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -38,16 +44,34 @@ app.use(helmet({
 }));
 
 // Session Management   
+app.set('trust proxy', 1); // Trust first proxy if behind a proxy (like in production)
+
+
 app.use(session({
     secret: process.env.NODE_ENV === 'production' ? process.env.SESSION_SECRET_PROD : process.env.SESSION_SECRET_LOCAL,
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl: process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI_PROD : process.env.MONGODB_URI_LOCAL,
+        collectionName: 'sessions'
+    }),
     cookie: {
-        secure: process.env.NODE_ENV === 'production', // Ensure cookies are secure in production
+        secure: process.env.NODE_ENV === 'production' && process.env.USE_SECURE_COOKIES === 'true', // Set USE_SECURE_COOKIES to 'false' when testing locally
+        httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000 // 1 day
     }
 }));
+// Force secure cookies in production when using HTTPS
+// if (process.env.NODE_ENV === 'production') {
+//     app.set('trust proxy', 1); // Trust first proxy
+//     session.cookie.secure = true; // Serve secure cookies
+// }
 
+app.use((req, res, next) => {
+    console.log('Session Middleware Check - Session ID:', req.sessionID);
+    console.log('Session Middleware Check - Session Data:', req.session);
+    next();
+});
 
 // Initializing MongoDB Connection (through middleware)
 mongoMiddleware.connectMongoDB();

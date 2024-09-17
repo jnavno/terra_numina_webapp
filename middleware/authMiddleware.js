@@ -6,7 +6,7 @@ module.exports = {
 
     handleLogin: (req, res) => {
         const { username, password } = req.body;
-        // Add login logic here
+
         if (username === 'user' && password === 'pass') {
             req.session.user = { username, role: 'student' }; // Example role
             console.log('Login successful:', req.session.user); // Debugging
@@ -23,6 +23,8 @@ module.exports = {
     },
 
     checkLoginStatus: (req, res) => {
+        console.log('Session ID:', req.sessionID);
+        console.log('Session Data:', req.session);
         res.status(200).json({ loggedIn: !!req.session.user });
     }
 };

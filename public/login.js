@@ -11,7 +11,8 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(formJSON)
+            body: JSON.stringify(formJSON),
+            credentials: 'include'  //includding cookies in the request
         });
 
         if (response.ok) {
