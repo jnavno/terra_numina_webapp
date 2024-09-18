@@ -116,15 +116,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const loginButton = document.querySelector('a[href="/login"]');
             const logoutButton = document.querySelector('a[href="/goodbye"]');
             const terraNuminaButton = document.querySelector('a[href="/terra_numina"]');
+            const accountButton = document.querySelector('a[href="account.html"]');
+            const practiceButton = document.querySelector('a[href="practice.html"]');
             
             if (data.loggedIn) {
                 if (loginButton) loginButton.style.display = 'none'; // Hide login button
                 if (logoutButton) logoutButton.style.display = 'block'; // Show logout button
                 if (terraNuminaButton) terraNuminaButton.style.display = 'block'; // Show Terra Numina button
+                if (accountButton) accountButton.style.display = 'block'; // Show account button
+                if (practiceButton) practiceButton.style.display = 'block'; // Show practice space button
             } else {
                 if (loginButton) loginButton.style.display = 'block'; // Show login button
                 if (logoutButton) logoutButton.style.display = 'none'; // Hide logout button
                 if (terraNuminaButton) terraNuminaButton.style.display = 'none'; // Hide Terra Numina button
+                if (accountButton) accountButton.style.display = 'none'; // Hide account button
+                if (practiceButton) practiceButton.style.display = 'none'; // Hide practice space button
             }
         })
         .catch(error => console.error('Error fetching login status:', error));
