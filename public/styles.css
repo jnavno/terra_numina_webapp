@@ -567,6 +567,14 @@ section a.btn:hover {
     align-items: center;
 }
 
+.resource-section {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc; /* Optional: Add border for visual separation */
+    padding: 20px;
+    background-color: #f9f9f9; /* Background color for each section */
+    border-radius: 5px; /* Rounded corners */
+}
 .service, .resource {
     flex: 2; /* Allow each service to take equal space */
     text-align: center; /* Center align text */
