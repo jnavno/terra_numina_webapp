@@ -594,6 +594,29 @@ section a.btn:hover {
 }
 
 
+/* Sign Up Button */
+.signup-button {
+    background: linear-gradient(45deg, #4CAF50, #45a049); /* Gradient background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding around the text */
+    font-size: 16px; /* Font size */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effect */
+}
+
+.signup-button:hover {
+    background: linear-gradient(45deg, #45a049, #388E3C); /* Darker gradient on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.signup-button:active {
+    transform: translateY(0); /* Remove lift effect on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow on click */
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
