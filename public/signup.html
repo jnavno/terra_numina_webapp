@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="signup.js" defer></script> <!-- JavaScript for validation -->
+</head>
+
+<body class="account-page">
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="terra_numina.html" style="display:none;">Terra Numina</a>
+        <a href="login.html">Login</a>
+    </div>
+
+    <div class="container">
+        <div class="title-wrapper">
+            <h1>Sign Up</h1>
+        </div>
+        <div class="homepage-links">
+            <div class="account-page">
+                <form id="signup-form" action="/signup" method="post" enctype="multipart/form-data">
+                    <div style="margin-bottom: 1em;">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div style="margin-bottom: 1em;">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    <div style="margin-bottom: 1em;">
+                        <label for="dob">Date of Birth:</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    <div style="margin-bottom: 1em;">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div style="margin-bottom: 1em;">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                        <br>
+                        <span style="color: #888; font-size: 0.9em;">Password should be at least 8 characters, including uppercase, lowercase, and a number.</span>
+                    </div>
+                    <div style="margin-bottom: 1em; display: flex; align-items: center;">
+                        <div class="profile-image-wrapper" style="margin-right: 1em;">
+                            <img src="images/placeholder_image_1.jpg
