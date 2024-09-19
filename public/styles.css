@@ -1,10 +1,17 @@
 /* General Styles */
 html, body {
+    position: fixed;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     width: 100%;
     box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    padding-top: 0px; /* Adjust this value based on the height of the navbar */
+}
+
+.content {
+    overflow-y: auto;
 }
 
 /* Navbar */
@@ -16,6 +23,7 @@ html, body {
     color: white;
     padding: 10px 20px; /* Adjust padding for spacing */
     box-sizing: border-box; /* Ensure padding is included in the total width */
+    overscroll-behavior: none; /* Prevent the bounce effect on the navbar */
 }
 
 .navbar a {
@@ -101,6 +109,8 @@ html, body {
     padding: 0; /* Add horizontal padding */
     box-sizing: border-box; /* Include padding in the width calculation */
     align-items: center;
+    overflow-y: auto;
+    min-height: 100vh; /* Allow content to fill viewport */
 }
 
 footer {
@@ -131,6 +141,8 @@ footer {
 .index-header-image {
     width: 100%; /* Full width of parent */
     height: auto; /* Maintain aspect ratio */
+    position: relative; /* Make it part of the flow */
+    width: 100%;
 }
 
 /* Title Wrapper */
