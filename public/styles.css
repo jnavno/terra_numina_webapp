@@ -1,48 +1,63 @@
 /* General Styles */
-html, body {
+html,
+body {
 
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     width: 100%;
     box-sizing: border-box;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    overscroll-behavior: contain; /*controls bouncing effect*/
+    overflow-x: hidden;    /* Prevent horizontal scrolling */
+    overscroll-behavior: contain;    /*controls bouncing effect*/
 }
 
 .content {
     overflow-y: auto;
 }
 
-/* Navbar */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     display: flex;
-    justify-content: flex-end; /* Space between items */
-    align-items: center; /* Vertically center items */
+    justify-content: flex-end;
+    align-items: center;
     background-color: #333;
     color: white;
     padding: 10px 20px;
     box-sizing: border-box;
-    z-index: 1000; /* Ensure navbar stays above other content */
+    z-index: 1000;
+    transition: max-height 0.3s ease;
+}
+
+.toggle-nav {
+    display: none;
+}
+
+/* Hamburger Icon (hidden by default) */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
 }
 
 .navbar a {
     color: white;
-    margin: 0 15px;
+    padding: 10px;
     text-decoration: none;
-    font-size: 16px; /* Set a base font size */
+    display: block;
 }
 
 .navbar a:hover {
-    background-color: #575757; /* Background color on hover */
+    background-color: #575757;
+    /* Background color on hover */
 }
 
 /* Adding padding to prevent content from being hidden by the fixed navbar */
 body {
-    padding-top: 35px; /* Adjust this value based on the height of your navbar */
+    padding-top: 35px;
+    /* Adjust this value based on the height of your navbar */
 }
 
 /* Center the login form and style inputs */
@@ -52,7 +67,7 @@ body {
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
@@ -67,23 +82,28 @@ body {
 
 .login-container input[type="text"],
 .login-container input[type="password"] {
-    width: calc(100% - 16px); /* Full width minus padding and border */
+    width: calc(100% - 16px);
+    /* Full width minus padding and border */
     padding: 8px;
     margin-bottom: 30px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
     font-size: 14px;
     height: 40px;
 }
 
 .login-container input::placeholder {
-    color: #8a8989; /* Pale grey color for the placeholder text */
-    font-size: 12px; /* Smaller font size for the placeholder text */
+    color: #8a8989;
+    /* Pale grey color for the placeholder text */
+    font-size: 12px;
+    /* Smaller font size for the placeholder text */
 }
 
 .login-container button {
-    width: calc(100% - 16px); /* Full width minus padding and border */
+    width: calc(100% - 16px);
+    /* Full width minus padding and border */
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -111,19 +131,27 @@ body {
 
 /* New index-specific container class */
 .index-container {
-    width: 100%; /* Full width of parent */
-    max-width: 100vw; /* Set maximum width for large screens */
-    margin: 0 auto; /* Center the container */
-    padding: 0; /* Add horizontal padding */
-    box-sizing: border-box; /* Include padding in the width calculation */
+    width: 100%;
+    /* Full width of parent */
+    max-width: 100vw;
+    /* Set maximum width for large screens */
+    margin: 0 auto;
+    /* Center the container */
+    padding: 0;
+    /* Add horizontal padding */
+
+    box-sizing: border-box;
+    /* Include padding in the width calculation */
     flex-direction: center;
     align-items: center;
     overflow-x: hidden;
-    min-height: 100vh; /* Allow content to fill viewport */
+    min-height: 100vh;
+    /* Allow content to fill viewport */
 }
 
 footer {
-    background-color: #727272; /* Dark background for contrast */
+    background-color: #727272;
+    /* Dark background for contrast */
     color: white;
     padding: 20px 0;
     text-align: center;
@@ -141,7 +169,8 @@ footer {
 .footer-links {
     display: flex;
     justify-content: center;
-    gap: 30px; /* Add spacing between the links */
+    gap: 30px;
+    /* Add spacing between the links */
     margin-bottom: 10px;
 }
 
@@ -153,7 +182,8 @@ footer {
 }
 
 .footer-links a:hover {
-    color: #9abee5; /* Light blue on hover */
+    color: #9abee5;
+    /* Light blue on hover */
 }
 
 .footer-copyright {
@@ -163,24 +193,33 @@ footer {
 
 /* New block-specific class for index page */
 .index-block-container {
-    width: 100%; /* Full width of parent */
-    padding: 0; /* Remove extra padding */
-    margin: 0; /* Remove extra margin */
+    width: 100%;
+    /* Full width of parent */
+    padding: 0;
+    /* Remove extra padding */
+    margin: 0;
+    /* Remove extra margin */
 }
 
 /* Adjust section styling within the index block container */
 .index-block-container section {
-    width: 100%; /* Full width */
+    width: 100%;
+    /* Full width */
     padding: 20px;
-    margin: 0; /* Remove extra margin */
-    box-sizing: border-box; /* Ensure padding is included in the width */
+    margin: 0;
+    /* Remove extra margin */
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
 }
 
 /* Adjust header image if needed */
 .index-header-image {
-    width: 100%; /* Full width of parent */
-    height: auto; /* Maintain aspect ratio */
-    position: relative; /* Make it part of the flow */
+    width: 100%;
+    /* Full width of parent */
+    height: auto;
+    /* Maintain aspect ratio */
+    position: relative;
+    /* Make it part of the flow */
     width: 100%;
 }
 
@@ -200,12 +239,14 @@ footer {
 
 /* Specific styles for the "Your Account" page */
 .account-page .title-wrapper {
-    margin-bottom: 0.5em; /* Adjust the space below the title-wrapper specifically for this page */
+    margin-bottom: 0.5em;
+    /* Adjust the space below the title-wrapper specifically for this page */
 }
 
 /* Ensure other page elements are not affected */
 .account-page .homepage-links {
-    margin-top: 0; /* Reset any margin-top if needed */
+    margin-top: 0;
+    /* Reset any margin-top if needed */
 }
 
 .image-wrapper {
@@ -224,8 +265,10 @@ footer {
 
 /* Profile Image section */
 .profile-image-wrapper {
-    text-align: left; /* Center the profile image horizontally */
-    margin: 1em 0; /* Space above and below the profile image */
+    text-align: left;
+    /* Center the profile image horizontally */
+    margin: 1em 0;
+    /* Space above and below the profile image */
 }
 
 .profile-image {
@@ -238,39 +281,51 @@ footer {
 
 /* Style for form elements */
 form label {
-    display: block; /* Ensure labels are block elements */
-    margin: 0; /* Space above each label */
+    display: block;
+    /* Ensure labels are block elements */
+    margin: 0;
+    /* Space above each label */
 }
 
 form input[type="text"],
 form input[type="password"],
 form input[type="file"] {
-    display: block; /* Ensure input fields are block elements */
+    display: block;
+    /* Ensure input fields are block elements */
     margin: 0;
-    width: 50%; /* Make input fields full-width */
+    width: 50%;
+    /* Make input fields full-width */
     font-size: 0.9em;
 }
 
 form textarea {
-    display: block; /* Ensure textareas are block elements */
+    display: block;
+    /* Ensure textareas are block elements */
     margin: 0;
-    width: 50%; /* Set textareas to half size */
+    width: 50%;
+    /* Set textareas to half size */
     font-size: 0.9em;
 }
 
 button[type="submit"] {
-    display: block; /* Ensure the button is a block element */
-    margin-top: 0.1em; /* Space above the button */
-    padding: 0.1em 0.5em; /* Padding inside the button */
-    font-size: 1em; /* Font size for the button text */
+    display: block;
+    /* Ensure the button is a block element */
+    margin-top: 0.1em;
+    /* Space above the button */
+    padding: 0.1em 0.5em;
+    /* Padding inside the button */
+    font-size: 1em;
+    /* Font size for the button text */
 }
 
 /* Subtitle Wrappers */
 .subtitle-wrapper .subtitle {
-    font-size: 1.6em; /* This makes the subtitle text larger, but smaller than the title */
+    font-size: 1.6em;
+    /* This makes the subtitle text larger, but smaller than the title */
     color: #333333;
     font-weight: 600;
-    line-height: 1.2; /* Adjust line height */
+    line-height: 1.2;
+    /* Adjust line height */
     margin-bottom: 0.5em;
 }
 
@@ -284,7 +339,8 @@ button[type="submit"] {
 }
 
 .subtitle-wrapper .subtitle a:hover {
-    color: #b1bac4; /* Change color on hover if desired */
+    color: #b1bac4;
+    /* Change color on hover if desired */
     text-decoration: none;
 }
 
@@ -507,15 +563,18 @@ main.sections {
 .header-image {
     position: relative;
     width: 100%;
-    height: 300px; /* Adjust height as needed */
+    height: 300px;
+    /* Adjust height as needed */
     background: url('images/header-image.jpg') no-repeat center center;
     background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
+    margin: 0;
+    /* Remove default margin */
+    padding: 0;
+    /* Remove default padding */
 }
 
 .header-text {
@@ -523,22 +582,27 @@ main.sections {
 }
 
 .header-text h1 {
-    font-size: 4.5em; /* Adjust font size as needed */
+    font-size: 4.5em;
+    /* Adjust font size as needed */
     margin: 0;
     color: white;
-    text-shadow: 
-        3px 3px 5px rgba(0, 0, 0, 0.4), 
-        0 0 30px rgba(0, 0, 0, 0.2), 
+    text-shadow:
+        3px 3px 5px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .header-text p {
     color: white;
-    font-size: 2.5rem; /* Adjust as needed */
-    text-shadow: 
-    3px 3px 5px rgba(0, 0, 0, 0.4),   /* Darker grey shadow, extended */
-        0 0 15px rgba(0, 0, 0, 0.2),  /* Lighter grey aura, extended */
-        0 0 10px rgba(0, 0, 0, 0.2);   /* Additional light grey shadow, extended */
+    font-size: 2.5rem;
+    /* Adjust as needed */
+    text-shadow:
+        3px 3px 5px rgba(0, 0, 0, 0.4),
+        /* Darker grey shadow, extended */
+        0 0 15px rgba(0, 0, 0, 0.2),
+        /* Lighter grey aura, extended */
+        0 0 10px rgba(0, 0, 0, 0.2);
+    /* Additional light grey shadow, extended */
 }
 
 
@@ -550,34 +614,51 @@ section {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    min-height: 100px; /* Ensure sections have a minimum height */
+    min-height: 100px;
+    /* Ensure sections have a minimum height */
     overflow: hidden;
-    margin: 0; /* Achieving continuous blocks */
+    margin: 0;
+    /* Achieving continuous blocks */
 }
 
 /* Alternating Background Colors */
 .header-image {
-    background-color: #f1f1f1; /* Light grey */
+    background-color: #f1f1f1;
+    /* Light grey */
 }
 
 .intro {
-    background-color: #e0e0e0; /* Slightly darker grey */
+    background-color: #e0e0e0;
+    /* Slightly darker grey */
+    padding: 30px 20px;
+    /* Adjust vertical padding */
+    min-height: 170px;
+    /* creates more vertical space */
 }
 
 .services {
-    background-color: #f1f1f1; /* Light grey */
+    background-color: #f1f1f1;
+    /* Light grey */
 }
 
 .contact {
-    background-color: #f1f1f1; /* Slightly darker grey */
+    background-color: #f1f1f1;
+    /* Maintain background color */
+    padding: 30px 20px;
+    /* Adjust vertical padding */
+    min-height: 200px;
+    /* creates more vertical space */
+
 }
 
 .podcast {
-    background-color: #f1f1f1; /* Light grey */
+    background-color: #f1f1f1;
+    /* Light grey */
 }
 
 .resources {
-    background-color: #e0e0e0; /* Slightly darker grey */
+    background-color: #e0e0e0;
+    /* Slightly darker grey */
 }
 
 
@@ -611,28 +692,39 @@ section a.btn:hover {
 }
 
 /* Services container adjustments */
-.services-container, .resources-container {
+.services-container,
+.resources-container {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Space between services */
+    gap: 20px;
+    /* Space between services */
     align-items: center;
 }
 
 .resource-section {
     display: flex;
     flex-direction: column;
-    border: 1px solid #ccc; /* Optional: Add border for visual separation */
+    border: 1px solid #ccc;
+    /* Optional: Add border for visual separation */
     padding: 20px;
-    background-color: #f9f9f9; /* Background color for each section */
-    border-radius: 5px; /* Rounded corners */
-}
-.service, .resource {
-    flex: 2; /* Allow each service to take equal space */
-    text-align: center; /* Center align text */
+    background-color: #f9f9f9;
+    /* Background color for each section */
+    border-radius: 5px;
+    /* Rounded corners */
 }
 
-.service img, .resource img{
-    width: 80px; /* Adjust icon size */
+.service,
+.resource {
+    flex: 2;
+    /* Allow each service to take equal space */
+    text-align: center;
+    /* Center align text */
+}
+
+.service img,
+.resource img {
+    width: 80px;
+    /* Adjust icon size */
     height: 80px;
     margin-bottom: 10px;
 }
@@ -655,37 +747,62 @@ section a.btn:hover {
 
 /* Sign Up Button */
 .signup-button {
-    background: linear-gradient(45deg, #4CAF50, #45a049); /* Gradient background */
-    color: white; /* White text */
-    padding: 10px 20px; /* Padding around the text */
-    font-size: 16px; /* Font size */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effect */
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    /* Gradient background */
+    color: white;
+    /* White text */
+    padding: 10px 20px;
+    /* Padding around the text */
+    font-size: 16px;
+    /* Font size */
+    border: none;
+    /* Remove default border */
+    border-radius: 5px;
+    /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background 0.3s ease, transform 0.2s ease;
+    /* Smooth transition for hover effect */
 }
 
 .signup-button:hover {
-    background: linear-gradient(45deg, #45a049, #388E3C); /* Darker gradient on hover */
-    transform: translateY(-2px); /* Slight lift effect */
+    background: linear-gradient(45deg, #45a049, #388E3C);
+    /* Darker gradient on hover */
+    transform: translateY(-2px);
+    /* Slight lift effect */
 }
 
 .signup-button:active {
-    transform: translateY(0); /* Remove lift effect on click */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow on click */
+    transform: translateY(0);
+    /* Remove lift effect on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Adjust shadow on click */
 }
 
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        text-align: center;
+    .navbar a {
+        display: none; /* Hide all links */
     }
 
-    .navbar a {
-        margin: 10px 0;
+    .hamburger {
+        display: block; /* Show hamburger icon */
+    }
+
+    .navbar.open a {
+        display: block;
+        text-align: left;
+        padding: 10px;
+        background-color: #333;
+        color: white;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .login-container {
@@ -702,11 +819,12 @@ section a.btn:hover {
     .link-section {
         width: 100%;
     }
-    
+
     section {
         width: 90%;
         margin: 0 auto;
     }
+
     .services-container {
         flex-direction: column;
         align-items: center;
@@ -716,12 +834,15 @@ section a.btn:hover {
         width: 80%;
         margin-bottom: 20px;
     }
-    
+
     .header-image {
-        height: 200px; /* Adjust for smaller screens */
+        height: 200px;
+        /* Adjust for smaller screens */
     }
+
     .container {
-        width: 100%; /* Full width on smaller screens */
+        width: 100%;
+        /* Full width on smaller screens */
     }
 }
 
@@ -731,6 +852,7 @@ section a.btn:hover {
         flex-direction: column;
         padding: 10px;
     }
+
     .login-container input,
     .login-container button {
         width: calc(100% - 12px);
