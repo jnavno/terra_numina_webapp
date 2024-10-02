@@ -12,71 +12,74 @@
 
 <body class="account-page">
     <div class="navbar">
-        <a href="/">Home</a>
+        <a href="index.html">Home</a>
         <a href="/terra_numina" style="display:none;">Terra Numina</a>
         <a href="background.html">Background</a>
         <a href="resources_overview.html">Resources</a>
-        <a href="/login">Login</a>
         <a href="goodbye.html" style="display:none;">Logout</a>
+        <a href="/login" style="display:block;">Login</a>
     </div>
 
     <div class="container">
         <div class="title-wrapper">
-            <h1>Sign up</h1>
-        </div>
-        <div class="homepage-links">
-            <div class="account-page">
-                <form id="signup-form" action="/signup" method="post" enctype="multipart/form-data">
-                    <div style="margin-bottom: 1em;">
-                        <label for="firstName">First Name:</label>
-                        <input type="text" id="firstName" name="firstName" required>
-                    </div>
-                    <div style="margin-bottom: 1em;">
-                        <label for="lastName">Last Name:</label>
-                        <input type="text" id="lastName" name="lastName" required>
-                    </div>
-                    <div style="margin-bottom: 1em;">
-                        <label for="dob">Date of Birth:</label>
-                        <input type="date" id="dob" name="dob" required>
-                    </div>
-                    <div style="margin-bottom: 1em;">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div style="margin-bottom: 1em;">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required>
-                        <br>
-                        <span style="color: #888; font-size: 0.9em;">Password should be at least 8 characters, including uppercase, lowercase, and a number.</span>
-                    </div>
-                    <div style="margin-bottom: 1em; display: flex; align-items: center;">
-                        <div class="profile-image-wrapper" style="margin-right: 1em;">
-                            <img src="images/placeholder_image_1.jpg" alt="Profile Photo" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10%; border: 2px solid #ddd;">
-                        </div>
-                        <div>
-                            <label for="profilePhoto">Profile Photo:</label>
-                            <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" required>
-                        </div>
-                    </div>
-                    <!-- Stylish Sign Up Button -->
-                    <div style="text-align: center; margin-top: 1.5em;">
-                        <button type="submit" class="btn">Sign Up</button>
-                    </div>
-                </form>
+            <h1>Sign Up</h1>
+            <div class="image-wrapper">
+                <img src="images/placeholder_image_1.jpg" alt="Sign Up" class="placeholder-image">
             </div>
+        </div>
+
+        <div class="homepage-links">
+
+
+            <form id="signup-form" action="/signup" method="post" enctype="multipart/form-data" style="margin-top: 2em;">
+                <div style="margin-bottom: 1em;">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div style="margin-bottom: 1em;">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div style="margin-bottom: 1em;">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <div style="margin-bottom: 1em;">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div style="margin-bottom: 1em;">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <br>
+                    <span style="color: #888; font-size: 0.9em;">Password should be at least 8 characters, including uppercase, lowercase, and a number.</span>
+                </div>
+                <div style="margin-bottom: 1em; display: flex; align-items: center;">
+                    <div class="profile-image-wrapper" style="margin-right: 1em;">
+                        <img src="images/placeholder_image_1.jpg" alt="Profile Photo" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10%; border: 2px solid #ddd;">
+                    </div>
+                    <div>
+                        <label for="profilePhoto">Profile Photo:</label>
+                        <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" required>
+                    </div>
+                </div>
+                <!-- Stylish Sign Up Button -->
+                <div style="text-align: center; margin-top: 1.5em;">
+                    <button type="submit" class="btn">Sign Up</button>
+                </div>
+            </form>
         </div>
     </div>
 
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-copyright">
-                <p>&copy; 2024 Terra Numina. All rights reserved.</p>
-            </div>
             <div class="footer-links">
                 <a href="terms_and_conditions.html">Terms and Conditions</a>
                 <a href="privacy_policy.html">Privacy Policy</a>
             </div>
-
+            <div class="footer-copyright">
+                <p>&copy; 2024 Terra Numina. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 </body>

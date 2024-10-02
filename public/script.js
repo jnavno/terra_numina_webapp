@@ -99,39 +99,74 @@ function loadPosts() {
     });
 }
 
-// Add event listener to the post form
-const postForm = document.querySelector('#postForm');
-if (postForm) {
-    postForm.addEventListener('submit', handlePostSubmit);
-}
-
-
-// Check login status and toggle login/logout buttons
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/login-status',{
+    const navbar = document.querySelector('.navbar');
+    const currentPage = window.location.pathname;
+
+    // Hide navbar on goodbye.html page
+    if (currentPage.includes('goodbye.html')) {
+        if (navbar) {
+            navbar.style.display = 'none';
+        }
+    }
+
+    // Add event listener to the logout button to ensure proper logout
+    const logoutButton = document.querySelector('a[href="/goodbye.html"]');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            fetch('/logout', {
+                method: 'GET',
+                credentials: 'include'
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Clear any local session-related data (e.g., localStorage)
+                    localStorage.clear();
+                    // Redirect to goodbye page on successful logout
+                    window.location.href = '/goodbye.html';
+                } else {
+                    console.error('Logout failed:', response.statusText);
+                }
+            })
+            .catch(error => console.error('Error during logout:', error));
+        });
+    }
+
+    // Check login status and toggle login/logout buttons
+    fetch('/login-status', {
         credentials: 'include'
     })
-        .then(response => response.json())
-        .then(data => {
-            const loginButton = document.querySelector('a[href="/login"]');
-            const logoutButton = document.querySelector('a[href="goodbye.html"]');
-            const terraNuminaButton = document.querySelector('a[href="/terra_numina"]');
-            const accountButton = document.querySelector('a[href="account.html"]');
-            const practiceButton = document.querySelector('a[href="practice.html"]');
-            
-            if (data.loggedIn) {
-                if (loginButton) loginButton.style.display = 'none'; // Hide login button
-                if (logoutButton) logoutButton.style.display = 'block'; // Show logout button
-                if (terraNuminaButton) terraNuminaButton.style.display = 'block'; // Show Terra Numina button
-                if (accountButton) accountButton.style.display = 'block'; // Show account button
-                if (practiceButton) practiceButton.style.display = 'block'; // Show practice space button
-            } else {
-                if (loginButton) loginButton.style.display = 'block'; // Show login button
-                if (logoutButton) logoutButton.style.display = 'none'; // Hide logout button
-                if (terraNuminaButton) terraNuminaButton.style.display = 'none'; // Hide Terra Numina button
-                if (accountButton) accountButton.style.display = 'none'; // Hide account button
-                if (practiceButton) practiceButton.style.display = 'none'; // Hide practice space button
-            }
-        })
-        .catch(error => console.error('Error fetching login status:', error));
+    .then(response => response.json())
+    .then(data => {
+        const loginButton = document.querySelector('a[href="/login"]');
+        const logoutLink = document.querySelector('a[href="goodbye.html"]');
+        const terraNuminaButton = document.querySelector('a[href="/terra_numina"]');
+        const accountButton = document.querySelector('a[href="account.html"]');
+        const practiceButton = document.querySelector('a[href="practice.html"]');
+        
+        if (data.loggedIn) {
+            if (loginButton) loginButton.style.display = 'none'; // Hide login button
+            if (logoutLink) logoutLink.style.display = 'block'; // Show logout button
+            if (terraNuminaButton) terraNuminaButton.style.display = 'block'; // Show Terra Numina button
+            if (accountButton) accountButton.style.display = 'block'; // Show account button
+            if (practiceButton) practiceButton.style.display = 'block'; // Show practice space button
+        } else {
+            if (loginButton) loginButton.style.display = 'block'; // Show login button
+            if (logoutLink) logoutLink.style.display = 'none'; // Hide logout link
+            if (terraNuminaButton) terraNuminaButton.style.display = 'none'; // Hide Terra Numina button
+            if (accountButton) accountButton.style.display = 'none'; // Hide account button
+            if (practiceButton) practiceButton.style.display = 'none'; // Hide practice space button
+        }
+    })
+    .catch(error => console.error('Error fetching login status:', error));
+
+    // Handle post form submission and other post-related functionalities
+    const postForm = document.querySelector('#postForm');
+    if (postForm) {
+        postForm.addEventListener('submit', handlePostSubmit);
+    }
+
+    // Load posts from local storage
+    loadPosts();
 });
