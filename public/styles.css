@@ -140,12 +140,26 @@ body {
     /* Allow content to fill viewport */
 }
 
+/* Terra Numina Page Specific */
+.terra-numina-page .terra-numina-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.terra-numina-page .homepage-links {
+    padding: 20px;
+    margin-bottom: 50px; /* Ensure there is space above the footer */
+}
+
 footer {
     background-color: #727272;
     /* Dark background for contrast */
     color: white;
     padding: 20px 0;
     text-align: center;
+    position: relative;
+    bottom: 0;
 }
 
 .footer-container {
