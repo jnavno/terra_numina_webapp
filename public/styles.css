@@ -1,21 +1,28 @@
 /* General Styles */
 html, body {
-    position: fixed;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     width: 100%;
     box-sizing: border-box;
     overflow-x: hidden; /* Prevent horizontal scrolling */
-    padding-top: 0px; /* Adjust this value based on the height of the navbar */
+    /*padding-top: 30px; /* Adjust this value based on the height of the navbar */
+    overflow-y: scroll; /* Allow vertical scrolling */
 }
 
+body {
+    overscroll-behavior-y: contain; /* Allows bounce effect on content only */
+}
 .content {
     overflow-y: auto;
+    padding-top: 0;
 }
 
 /* Navbar */
 .navbar {
+    position: fixed; /* Fix the navbar at the top */
+    top: 0;
+    width: 100%; /* Full width */
     display: flex;
     justify-content: flex-end; /* Space between items */
     align-items: center; /* Vertically center items */
@@ -23,6 +30,7 @@ html, body {
     color: white;
     padding: 10px 20px; /* Adjust padding for spacing */
     box-sizing: border-box; /* Ensure padding is included in the total width */
+    z-index: 1000; /* Ensure the navbar is above other content */
     overscroll-behavior: none; /* Prevent the bounce effect on the navbar */
 }
 
@@ -137,16 +145,10 @@ footer {
     box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
-/* Adjust header image if needed */
-.index-header-image {
-    width: 100%; /* Full width of parent */
-    height: auto; /* Maintain aspect ratio */
-    position: relative; /* Make it part of the flow */
-    width: 100%;
-}
 
 /* Title Wrapper */
 .title-wrapper {
+    margin-top: 100px;
     margin-bottom: 100px;
     padding-left: 150px;
     position: relative;
@@ -477,10 +479,16 @@ main.sections {
     color: white;
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
+    top: 0;
+    z-index: 1;
 }
 
 .header-text {
     text-align: center;
+    position: relative;
+    padding-top: 40px;
+    z-index: 1;
+
 }
 
 .header-text h1 {
