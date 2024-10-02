@@ -18,7 +18,8 @@ module.exports = {
     handleLogout: (req, res) => {
         req.session.destroy(err => {
             if (err) return res.status(500).send('Could not log out.');
-            res.redirect('/goodbye');
+            res.clearCookie('connect.sid');
+            res.redirect('/goodbye.html');
         });
     },
 
