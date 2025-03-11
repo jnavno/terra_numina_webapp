@@ -187,16 +187,115 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener("DOMContentLoaded", function () {
     const pageHeader = document.querySelector(".page-header");
+    const content = document.querySelector(".container") || document.querySelector(".index-container");
+    const galleryContainer = document.querySelector(".gallery-container");
+    const galleryTrack = document.querySelector(".gallery-track");
 
     if (pageHeader) {
         const imageUrl = pageHeader.getAttribute("data-image");
         const imageOffset = pageHeader.getAttribute("data-offset") || "0px"; // Default to no movement
+        const customHeight = pageHeader.getAttribute("data-height") || "600px"; // Default to 600px if not provided
 
+        // ✅ Set background image for header
         if (imageUrl) {
             pageHeader.style.backgroundImage = `url(${imageUrl})`;
             pageHeader.style.backgroundSize = "cover";
             pageHeader.style.backgroundRepeat = "no-repeat";
-            pageHeader.style.backgroundPosition = `center ${imageOffset}`; // Apply manual vertical offset
+            pageHeader.style.backgroundPosition = `center ${imageOffset}`;
+        }
+
+        // ✅ Ensure header and gallery elements have proper height
+        pageHeader.style.height = customHeight;
+        if (galleryContainer) galleryContainer.style.height = customHeight;
+        if (galleryTrack) galleryTrack.style.height = customHeight;
+
+        // ✅ Ensure images adjust properly within the gallery
+        const images = document.querySelectorAll(".gallery-track img");
+        images.forEach(img => {
+            img.style.height = "100%";
+            img.style.width = "auto";
+            img.style.objectFit = "contain"; // Prevents cropping
+        });
+
+        // ✅ Ensure content starts DIRECTLY BELOW the header
+        if (content) {
+            function updateMargin() {
+                const headerHeight = pageHeader.offsetHeight;
+                content.style.marginTop = `${headerHeight}px`; // Match header height
+            }
+
+            updateMargin(); // Set on page load
+            window.addEventListener("resize", updateMargin); // Adjust on window resize
+        }
+
+        // ✅ Fix unwanted white spaces
+        document.body.style.margin = "0";
+        document.body.style.padding = "0";
+
+        // ✅ Enable full-page scrolling without extra gaps
+        document.documentElement.style.overflowY = "auto";
+        document.documentElement.style.height = "100%"; 
+        document.body.style.height = "100%"; 
+
+        // ✅ Ensure `.container` takes only the necessary space
+        if (content) {
+            content.style.minHeight = `calc(100vh - ${pageHeader.offsetHeight}px)`;
         }
     }
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const pageHeader = document.querySelector(".page-header");
+    const content = document.querySelector(".container") || document.querySelector(".index-container");
+
+    if (pageHeader && content) {
+        function updateMargin() {
+            const headerHeight = pageHeader.offsetHeight;
+            content.style.marginTop = `${headerHeight}px`; // Ensure it starts just below the header
+        }
+
+        updateMargin(); // Apply on page load
+        window.addEventListener("resize", updateMargin); // Adjust on window resize
+    }
+});
+
+
+
+
+// Auto-Scroll Gallery Sliding Effect
+
+document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".gallery-track img");
+    const dots = document.querySelectorAll(".dot");
+    let index = 0;
+
+    function showSlide(n) {
+        slides.forEach((slide, i) => {
+            slide.style.opacity = i === n ? "1" : "0";
+        });
+        dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === n);
+        });
+    }
+
+    function nextSlide() {
+        index = (index + 1) % slides.length;
+        showSlide(index);
+    }
+
+    function prevSlide() {
+        index = (index - 1 + slides.length) % slides.length;
+        showSlide(index);
+    }
+
+    function goToSlide(n) {
+        index = n;
+        showSlide(index);
+    }
+
+    setInterval(nextSlide, 4000); // Auto-change every 4 sec
+    showSlide(index);
 });
