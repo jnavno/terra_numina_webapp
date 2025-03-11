@@ -8,10 +8,8 @@ module.exports = {
             ? process.env.MONGODB_URI_PROD // Use production MongoDB URI
             : process.env.MONGODB_URI_LOCAL; // Use local MongoDB URI
 
-        mongoose.connect(uri, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        }).then(() => {
+        mongoose.connect(uri)
+        .then(() => {
             console.log(`Connected to MongoDB: ${process.env.NODE_ENV}`);
         }).catch(err => {
             console.error("MongoDB connection error:", err);

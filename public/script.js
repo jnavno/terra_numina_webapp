@@ -99,6 +99,20 @@ function loadPosts() {
     });
 }
 
+async function checkLoginStatus() {
+    try {
+        const response = await fetch('/login-status');
+        const data = await response.json();
+
+        if (!data.isAuthenticated) {
+            window.location.href = '/login'; // Redirect if not logged in
+        }
+    } catch (error) {
+        console.error('Error checking login status:', error);
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     const currentPage = window.location.pathname;
@@ -169,4 +183,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load posts from local storage
     loadPosts();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const pageHeader = document.querySelector(".page-header");
+
+    if (pageHeader) {
+        const imageUrl = pageHeader.getAttribute("data-image");
+        const imageOffset = pageHeader.getAttribute("data-offset") || "0px"; // Default to no movement
+
+        if (imageUrl) {
+            pageHeader.style.backgroundImage = `url(${imageUrl})`;
+            pageHeader.style.backgroundSize = "cover";
+            pageHeader.style.backgroundRepeat = "no-repeat";
+            pageHeader.style.backgroundPosition = `center ${imageOffset}`; // Apply manual vertical offset
+        }
+    }
 });

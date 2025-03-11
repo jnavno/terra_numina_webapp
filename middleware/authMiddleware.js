@@ -1,18 +1,24 @@
 module.exports = {
     ensureAuthenticated: (req, res, next) => {
-        if (req.session.user) return next();
-        res.redirect('/login');
+        if (req.session.user && req.session.user) {
+            return next(); // User is logged in, so continue to the requested route
+        }
+        req.session.destroy();
+        res.clearCookie('connect.sid');
+        res.redirect('/login'); // Redirect to login if the user is not authenticated
     },
 
     handleLogin: (req, res) => {
         const { username, password } = req.body;
 
+        // Basic authentication check (you can make this more complex later)
         if (username === 'user' && password === 'pass') {
-            req.session.user = { username, role: 'student' }; // Example role
+            req.session.user = { username, role: 'student' }; // Set user session data
             console.log('Login successful:', req.session.user); // Debugging
-            return res.status(200).json({ message: 'Login successful' });
+            return res.redirect('/terra_numina'); // Redirect user to a protected page after login
         }
-        res.status(401).json({ error: 'Invalid credentials' });
+
+        res.status(401).json({ error: 'Invalid credentials' }); // If credentials are wrong
     },
 
     handleLogout: (req, res) => {
