@@ -6,6 +6,15 @@
     <title>Past Field Trips</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+
+    <!-- Leaflet.js for custom map embedding -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.min.js"></script>
+
+    <style>
+        #map { height: 500px; width: 100%; margin-top: 20px; }
+    </style>
 </head>
 
 <body>
@@ -59,8 +68,12 @@
 
     <!-- Placeholder for more content -->
     <div class="container">
-        <h2>Past Field Trips</h2>
-        <p>More details about the portfolio...</p>
+        <h2>Capturing Spaces in the Land</h2>
+        <div id="map"></div>
+    </div>
+    <div class="container">
+        <h2>Interactive Tracks from Past Field Trips</h2>
+        <p>Another section with content</p>
     </div>
 </div>
 
@@ -80,6 +93,71 @@
 
     </div>
 </footer>
+    <!-- Leaflet.js Script for GPX Track -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    var map = L.map('map').setView([0, 0], 5); // Default center and zoom
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    var gpxFile = "gpx/track.gpx"; // Ensure correct path
+
+    var customWaypointIcon = L.icon({
+        iconUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png', 
+        iconSize: [25, 41], 
+        iconAnchor: [12, 41], 
+        popupAnchor: [1, -34]
+    });
+
+    fetch(gpxFile)
+        .then(response => response.text())
+        .then(gpxText => {
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(gpxText, "text/xml");
+
+            var waypoints = xmlDoc.getElementsByTagName("wpt");
+            var trackPoints = xmlDoc.getElementsByTagName("trkpt");
+
+            var trackCoords = [];
+            var bounds = new L.LatLngBounds();
+
+            // Process waypoints (markers)
+            for (let i = 0; i < waypoints.length; i++) {
+                let lat = parseFloat(waypoints[i].getAttribute("lat"));
+                let lon = parseFloat(waypoints[i].getAttribute("lon"));
+                let nameElem = waypoints[i].getElementsByTagName("name")[0];
+                let descElem = waypoints[i].getElementsByTagName("desc")[0];
+
+                let name = nameElem ? nameElem.textContent : "Waypoint";
+                let desc = descElem ? descElem.textContent : "No description";
+
+                let marker = L.marker([lat, lon], { icon: customWaypointIcon })
+                    .bindPopup(`<b>${name}</b><br>${desc}`)
+                    .addTo(map);
+
+                bounds.extend([lat, lon]);
+            }
+
+            // Process track points (path)
+            for (let i = 0; i < trackPoints.length; i++) {
+                let lat = parseFloat(trackPoints[i].getAttribute("lat"));
+                let lon = parseFloat(trackPoints[i].getAttribute("lon"));
+                trackCoords.push([lat, lon]);
+                bounds.extend([lat, lon]);
+            }
+
+            // Draw track line if there are track points
+            if (trackCoords.length > 1) {
+                L.polyline(trackCoords, { color: 'blue', weight: 3 }).addTo(map);
+            }
+
+            // Fit map to markers and track
+            map.fitBounds(bounds);
+        })
+        .catch(error => console.error("Error loading GPX file:", error));
+});
+
+
+    </script>
 
 </body>
 </html>
