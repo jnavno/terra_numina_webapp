@@ -3,21 +3,102 @@ html, body {
     font-family: Arial, sans-serif;
     height: 100%;
     margin: 0;
-    padding: 0;
-    width: 100%;
-    box-sizing: border-box;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    /*padding-top: 30px; /* Adjust this value based on the height of the navbar */
-    overflow-y: auto; /* Allow vertical scrolling */
-    height: 100%;
+    /* padding: 0;
+    width: 100%; */
+    /* box-sizing: border-box; */
+    /* overflow-x: hidden; Prevent horizontal scrolling
+    overflow-y: auto; Allow vertical scrolling
     display: flex;
-    flex-direction: column;
-    overflow-y: auto; /* Full page scrolling */
+    flex-direction: column; */
 }
 
-body {
-    overscroll-behavior-y: contain; /* Allows bounce effect on content only */
+/* body {
+    overscroll-behavior-y: contain; Allows bounce effect on content only
+} */
+
+.background1, .background2, .background3{
+    position: relative;
+    opacity: 0.6;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+.background1{
+    background-image: url('images/banner0.jpg');
+    min-height: 100%;
+}
+
+.background2{
+    background-image: url('images/banner2.jpg');
+    min-height: 450px;
+}
+
+.background3{
+    background-image: url('images/banner5.jpg');
+    min-height: 450px;
+}
+
+.buttondiv{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: black;
+}
+
+.button{
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid white;
+    color: white;
+    padding: 16px;
+    font-size: 22px;
+    letter-spacing: 8px;
+}
+
+.button:hover{
+    background-color: #232425;
+    transition: 1s;
+    opacity: 0.3;
+}
+
+.heading{
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+}
+
+.welcome{
+    color: #6b6a6a;
+    background-color: white;
+    text-align: center;
+    padding: 60px 50px;
+    text-align: justify;
+}
+
+.about{
+    color: #9c9b9b;
+    background-color: #232425;
+    text-align: center;
+    padding: 60px 50px;
+    text-align: justify;
+}
+
+.contact{
+    color: #232425;
+    background-color: white;
+    text-align: center;
+    padding: 60px 50px;
+    text-align: justify;
+}
+
+.wrapper{
+    position: relative;
+}
+
 .content {
     overflow-y: auto;
     padding-top: 0;
@@ -73,11 +154,6 @@ body {
     background-color: rgba(255, 255, 255, 0.2); /* Subtle background change */
 }
 
-/* Adding padding to prevent content from being hidden by the fixed navbar */
-body {
-    padding-top: 35px;
-    /* Adjust this value based on the height of your navbar */
-}
 
 /* Center the login form and style inputs */
 .login-container {
