@@ -101,9 +101,9 @@ app.get('/test-db-connection', async (req, res) => {
 
 // ✅ Authentication Routes
 app.get('/login', (req, res) => {
-    if (req.session.user && req.session.user.role) {
-        return res.redirect(req.session.user.role === 'admin' ? '/admin-dashboard' : '/student-dashboard');
-    }
+    // if (req.session.user && req.session.user.role) {
+    //     return res.redirect(req.session.user.role === 'admin' ? '/admin-dashboard' : '/student-dashboard');
+    // }
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
