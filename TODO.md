@@ -1,5 +1,13 @@
 # TODO List for Terra Numina Web App
 
+## Multi-repo Migration
+- [ ] Split Current Codebase: Move public content and web app logic into separate repositories.
+
+- [ ] Set Up Separate Deployment Pipelines: Configure Vercel/Netlify for the public site and CI/CD for the web app.
+
+- [ ] Test and Launch: Validate that both systems work independently while maintaining expected functionality.
+
+
 ## Backend
 - [ ] Fix loging status handling in `server.js`
 - [ ] Layout MongoDB structure & queries for `/api/posts`
@@ -13,6 +21,7 @@
 - [x] Update Activities page contents
 - [x] Think about transparent navbar
 - [ ] Highlight animation on the current page in navbar
+- [ ] navbar for mobile
 
 ## Questions to Pep:
 1. How should the user authentication flow be improved?
