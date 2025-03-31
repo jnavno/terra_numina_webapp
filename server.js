@@ -9,32 +9,32 @@ const MongoStore = require('connect-mongo');
 
 // Custom middlewares
 const mongoMiddleware = require('./middleware/mongoMiddleware');
-const authMiddleware = require('./middleware/authMiddleware'); // Auth middleware
+const authMiddleware = require('./middleware/authMiddleware');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// ✅ Allow frontend to access backend
+//Allow frontend to access backend
 const allowedOrigins = [
     'https://terra-numina-web.vercel.app',
     'http://localhost:3000',
-    'http://localhost:5500' // Add any other origins you use for development
+    'http://localhost:5500' // other development origins
 ];
 
-// ✅ Serve static files FIRST
+//Serve static files FIRST
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ✅ CORS settings
+//CORS settings
 app.use(cors({
     origin: allowedOrigins,
     credentials: true
 }));
 
-// ✅ Body parsing
+//Body parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// ✅ Security headers
+//Security headers
 app.use(helmet({
     contentSecurityPolicy: {
         directives: {
@@ -52,20 +52,20 @@ app.use(helmet({
     noSniff: false
 }));
 
-// ✅ MongoDB Connection
+// MongoDB Connection
 async function startServer() {
     try {
         await mongoMiddleware.connectMongoDB();
-        console.log('✅ MongoDB Connected');
+        console.log('MongoDB Connected');
     } catch (error) {
-        console.error('❌ MongoDB Connection Failed:', error.message);
+        console.error('MongoDB Connection Failed:', error.message);
         process.exit(1); // Stop the server if MongoDB fails
     }
 }
 
 startServer();
 
-// ✅ Session Management
+// Session Management
 app.set('trust proxy', 1); // Trust first proxy if behind a proxy (like in production)
 app.use(session({
     secret: process.env.NODE_ENV === 'production' ? process.env.SESSION_SECRET_PROD : process.env.SESSION_SECRET_LOCAL,
@@ -82,14 +82,14 @@ app.use(session({
     }
 }));
 
-// ✅ Debugging: Check if session works
+// Debugging: Check if session works
 app.use((req, res, next) => {
     console.log('Session Middleware Check - Session ID:', req.sessionID);
     console.log('Session Middleware Check - Session Data:', req.session);
     next();
 });
 
-// ✅ Test MongoDB connection
+// Test MongoDB connection
 app.get('/test-db-connection', async (req, res) => {
     try {
         const result = await mongoose.connection.db.admin().ping();
@@ -99,11 +99,11 @@ app.get('/test-db-connection', async (req, res) => {
     }
 });
 
-// ✅ Authentication Routes
+// Authentication Routes
 app.get('/login', (req, res) => {
-    // if (req.session.user && req.session.user.role) {
-    //     return res.redirect(req.session.user.role === 'admin' ? '/admin-dashboard' : '/student-dashboard');
-    // }
+    if (req.session.user && req.session.user.role) {
+        return res.redirect(req.session.user.role === 'admin' ? '/admin-dashboard' : '/student-dashboard');
+    }
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
@@ -111,7 +111,7 @@ app.post('/login', authMiddleware.handleLogin);
 app.get('/logout', authMiddleware.handleLogout);
 app.get('/login-status', authMiddleware.checkLoginStatus);
 
-// ✅ Only Protect API Routes (Fix Issue #4)
+// Only Protect API Routes
 app.use('/api/posts', authMiddleware.ensureAuthenticated);
 
 app.post('/api/posts', async (req, res) => {
@@ -133,12 +133,12 @@ app.get('/api/posts', async (req, res) => {
     }
 });
 
-// ✅ Home Page Route
+//Home Page Route
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// ✅ Other Secured Pages
+//Other Secured Pages
 app.get('/terra_numina', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'terra_numina.html'));
 });
@@ -151,7 +151,7 @@ app.get('/student-dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'student-dashboard.html'));
 });
 
-// ✅ Start the server
+// Start the server
 app.listen(port, () => {
-    console.log(`✅ Server running on http://localhost:${port}`);
+    console.log(`Server running on http://localhost:${port}`);
 });
