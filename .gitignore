@@ -33,5 +33,4 @@ db/
 # Other tools
 .env.*
 .npmrc
-.yarnrc
-
+.yarnrcnode_modules/
