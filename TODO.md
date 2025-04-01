@@ -11,21 +11,23 @@
 ## Backend
 - [ ] Fix loging status handling in `server.js`
 - [ ] Layout MongoDB structure & queries for `/api/posts`
-- [ ] Connect automatic email generation feature to database + cc feature to TNgmail
+
 
 ## Frontend
+- [ ] clean all website-related files and reassign hyperlinks
 - [ ] Fix mobile responsiveness in `resources_public.html`
 - [x] Code dynamic slider in home page
 - [ ] Propose a simple admin dashboard layout
-- [x] Add Past Field Trips page
-- [x] Update Activities page contents
+
+
 - [x] Think about transparent navbar
 - [ ] Highlight animation on the current page in navbar
 - [ ] navbar for mobile
 
 ## Questions to Pep:
-1. How should the user authentication flow be improved?
+
 2. Should we add an admin dashboard for managing content?
+    maybe follow a button only approach, no dedicated pages. Share ui except for buttons for each role
 3. Have a section to see members list and who is subscribed to mailing? should that be default?
 
 
