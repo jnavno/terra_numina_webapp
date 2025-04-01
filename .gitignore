@@ -34,3 +34,6 @@ db/
 .env.*
 .npmrc
 .yarnrcnode_modules/
+
+#Task list and dev notes
+TODO.md
